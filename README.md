@@ -76,6 +76,6 @@ You can test the endpoints while `python app.py` is running.
 - **Expected Output:**
   ```json
   {
-    "response": "Hi!"
+    "response": "Hi!","I'm fine,thanks!","goodbye;".
   }
   ```
