@@ -1,0 +1,300 @@
+/* ==========================================================================
+   Basic Chatbot - Stylesheet
+   Modern, clean, responsive card-style interface.
+   ========================================================================== */
+
+/* 1. Global Reset & Box Sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Body & Background */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, #eef2f7 0%, #dbe7f3 100%);
+  color: #1e293b;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+/* 3. Outer Wrapper */
+.chat-app {
+  width: 100%;
+  max-width: 520px;
+  height: 90vh;
+  max-height: 720px;
+  display: flex;
+}
+
+/* 4. Chat Card (Main Window) */
+.chat-card {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+/* 5. Header */
+.chat-header {
+  background: #ffffff;
+  padding: 16px 20px;
+  border-bottom: 1px solid #edf2f7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar-icon {
+  width: 44px;
+  height: 44px;
+  background-color: #eff6ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  border: 1px solid #dbeafe;
+}
+
+.chat-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.chat-status {
+  font-size: 0.8rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #22c55e; /* Green status indicator */
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+}
+
+/* 6. Messages Container */
+.chat-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background-color: #f8fafc;
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 3px;
+}
+.chat-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 7. Message Rows */
+.message-row {
+  display: flex;
+  width: 100%;
+}
+
+.bot-row {
+  justify-content: flex-start; /* Bot messages on left */
+}
+
+.user-row {
+  justify-content: flex-end; /* User messages on right */
+}
+
+/* 8. Message Bubbles */
+.message-bubble {
+  max-width: 80%;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  word-wrap: break-word;
+  position: relative;
+}
+
+/* Bot Message Bubble (Left side) */
+.bot-bubble {
+  background-color: #ffffff;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px 14px 14px 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+/* User Message Bubble (Right side) */
+.user-bubble {
+  background-color: #2563eb; /* Clean modern blue */
+  color: #ffffff;
+  border-radius: 14px 14px 2px 14px;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.15);
+}
+
+/* Error Message Bubble */
+.error-bubble {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  border-radius: 14px 14px 14px 2px;
+}
+
+/* 9. Message Timestamp */
+.message-time {
+  font-size: 0.72rem;
+  margin-top: 5px;
+  text-align: right;
+  opacity: 0.7;
+}
+
+.user-bubble .message-time {
+  color: #e0e7ff;
+}
+
+.bot-bubble .message-time {
+  color: #64748b;
+}
+
+/* 10. Typing / Loading Indicator */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 20px;
+  background-color: #f8fafc;
+  border-top: 1px solid #f1f5f9;
+}
+
+.typing-indicator .dot {
+  width: 6px;
+  height: 6px;
+  background-color: #64748b;
+  border-radius: 50%;
+  animation: pulse 1.4s infinite ease-in-out both;
+}
+
+.typing-indicator .dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-indicator .dot:nth-child(2) { animation-delay: -0.16s; }
+.typing-indicator .dot:nth-child(3) { animation-delay: 0; }
+
+.typing-label {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-left: 6px;
+}
+
+@keyframes pulse {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* 11. Input Form Area */
+.chat-input-form {
+  padding: 14px 16px;
+  background-color: #ffffff;
+  border-top: 1px solid #edf2f7;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 24px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+.chat-input:focus {
+  border-color: #2563eb;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* 12. Send Button */
+.send-button {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background-color 0.2s, opacity 0.2s, transform 0.1s;
+}
+
+.send-button:hover:not(:disabled) {
+  background-color: #1d4ed8;
+}
+
+.send-button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Disabled Send Button (Requirement #11) */
+.send-button:disabled {
+  background-color: #94a3b8;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 13. Mobile Responsiveness */
+@media (max-width: 600px) {
+  body {
+    padding: 0;
+  }
+  .chat-app {
+    height: 100vh;
+    max-height: 100vh;
+  }
+  .chat-card {
+    border-radius: 0;
+    border: none;
+  }
+  .message-bubble {
+    max-width: 88%;
+  }
+}

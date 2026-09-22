@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Chatbot</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Main Container: Centers the chatbot card on the screen -->
+  <div class="chat-app">
+    <div class="chat-card">
+      
+      <!-- Chat Header -->
+      <header class="chat-header">
+        <div class="header-info">
+          <div class="avatar-icon">🤖</div>
+          <div>
+            <h1 class="chat-title">Basic Chatbot</h1>
+            <p class="chat-status"><span class="status-dot"></span> Online &bull; Rule-Based</p>
+          </div>
+        </div>
+      </header>
+
+      <!-- Chat Messages Container (Scrollable) -->
+      <main class="chat-messages" id="chat-messages" aria-live="polite">
+        <!-- Initial Bot Welcome Message -->
+        <div class="message-row bot-row">
+          <div class="message-bubble bot-bubble">
+            <div class="message-text">Hello! I am a basic rule-based chatbot. Try saying <strong>"hello"</strong>, <strong>"how are you"</strong>, or <strong>"bye"</strong>!</div>
+            <div class="message-time" id="initial-time"></div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Loading / Typing Indicator (shown when waiting for backend response) -->
+      <div class="typing-indicator" id="typing-indicator" style="display: none;">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="typing-label">Bot is thinking...</span>
+      </div>
+
+      <!-- Chat Input Form -->
+      <form class="chat-input-form" id="chat-form">
+        <input
+          type="text"
+          id="user-input"
+          class="chat-input"
+          placeholder="Type a message (e.g. 'hello', 'how are you')..."
+          autocomplete="off"
+          required
+        />
+        <button type="submit" id="send-btn" class="send-button" disabled>
+          Send
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
